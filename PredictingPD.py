@@ -44,6 +44,7 @@ def rf_examine_n_estimators():
 # endregion
 
 
+random_seed = 42
 scoring = ['precision', 'recall', 'f1', 'accuracy']
 
 # Perform 10 fold validation
@@ -91,11 +92,9 @@ print("============================================================")
 print("K-fold cross-validated paired t-test:")
 print()
 
-svm_model.fit(x_train, y_train)
-RF_model.fit(x_train, y_train)
 t, p = paired_ttest_kfold_cv(estimator1=svm_model,
                              estimator2=RF_model,
                              X=x, y=y,
-                             random_seed=1)
+                             random_seed=42)
 print('t statistic: %.3f' % t)
 print('p value: %.3f' % p)
